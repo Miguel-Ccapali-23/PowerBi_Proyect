@@ -1,0 +1,155 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "98cb767dbe9a3208ea96",
+  "position": {
+    "x": 476.66666666666669,
+    "y": 70,
+    "z": 1000,
+    "height": 650,
+    "width": 770,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "map",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Global Super Store Data"
+                    }
+                  },
+                  "Property": "City"
+                }
+              },
+              "queryRef": "Global Super Store Data.City",
+              "nativeQueryRef": "Ciudad",
+              "active": true,
+              "displayName": "Ciudad"
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Global Super Store Data"
+                        }
+                      },
+                      "Property": "Sales"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Global Super Store Data.Sales)",
+              "nativeQueryRef": "Facturación",
+              "displayName": "Facturación"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Global Super Store Data"
+                        }
+                      },
+                      "Property": "Profit"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Global Super Store Data.Profit)",
+              "nativeQueryRef": "Beneficio",
+              "displayName": "Beneficio"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Global Super Store Data"
+                        }
+                      },
+                      "Property": "Order ID"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "Min(Global Super Store Data.Order ID)",
+              "nativeQueryRef": "Recuento de Order ID",
+              "displayName": "Pedidos totales"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "mapStyles": [
+        {
+          "properties": {
+            "mapTheme": {
+              "expr": {
+                "Literal": {
+                  "Value": "'canvasDark'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#4F9A6D'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

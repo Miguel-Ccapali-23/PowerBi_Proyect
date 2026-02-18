@@ -1,0 +1,99 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Global Super Store Data",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 62
+          },
+          "nodeIndex": "Frecuencia de compras clientes",
+          "nodeLineageTag": "6fa8f8de-9c17-4b47-bfc2-14983bd17360",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 568,
+            "y": 86
+          },
+          "nodeIndex": "Unique Customer ID",
+          "nodeLineageTag": "aeee26a1-4091-40b3-bc5e-bbde30b7f5ef",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 74
+          },
+          "nodeIndex": "ParámetroBeneficioFacturacion",
+          "nodeLineageTag": "dfa49841-4442-4675-abbd-8a6d6dd7a85a",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136,
+            "y": 74
+          },
+          "nodeIndex": "ProductMetrics",
+          "nodeLineageTag": "d2f22ebd-9f7a-489e-b7a6-08141eda76df",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1420,
+            "y": 38
+          },
+          "nodeIndex": "DiscountAdjustment",
+          "nodeLineageTag": "f69c1d93-523a-4d87-842a-6b14155eb43a",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 92.447916666666657,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}

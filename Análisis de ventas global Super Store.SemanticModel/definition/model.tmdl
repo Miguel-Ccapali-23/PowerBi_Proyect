@@ -1,0 +1,26 @@
+model Model
+	culture: es-PE
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-PE
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Global Super Store Data","Frecuencia de compras clientes","Unique Customer ID"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'Global Super Store Data'
+ref table DateTableTemplate_4b38e3ac-21d0-4001-8b07-a29b1145f750
+ref table LocalDateTable_f203a5ae-8ccd-49e8-982a-090325b4c85e
+ref table LocalDateTable_e82c604d-fcac-4091-a2cb-217da0a0c908
+ref table 'Frecuencia de compras clientes'
+ref table 'Unique Customer ID'
+ref table ParámetroBeneficioFacturacion
+ref table ProductMetrics
+ref table DiscountAdjustment
+
+ref cultureInfo es-PE
+

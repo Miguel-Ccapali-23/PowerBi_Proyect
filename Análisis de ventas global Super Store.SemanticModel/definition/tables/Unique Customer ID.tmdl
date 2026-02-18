@@ -1,0 +1,37 @@
+table 'Unique Customer ID'
+	lineageTag: aeee26a1-4091-40b3-bc5e-bbde30b7f5ef
+
+	column 'Customer Name'
+		dataType: string
+		lineageTag: 57d2ef92-167c-4d0a-8d1e-a40d1cf09cef
+		summarizeBy: none
+		sourceColumn: Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer ID Unique'
+		dataType: string
+		lineageTag: cbcbb857-e703-490f-9941-4994155999d2
+		summarizeBy: none
+		sourceColumn: Customer ID Unique
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Unique Customer ID' = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\HP\Downloads\Global_Superstore_Dataset.xlsx"), null, true),
+				    Sheet1_Sheet = Origen{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"Row ID", Int64.Type}, {"Order ID", type text}, {"Order Date", type date}, {"Ship Date", type date}, {"Ship Mode", type text}, {"Customer ID", type text}, {"Customer Name", type text}, {"Segment", type text}, {"City", type text}, {"State", type text}, {"Country", type text}, {"Postal Code", Int64.Type}, {"Market", type text}, {"Region", type text}, {"Product ID", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Product Name", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Discount", type number}, {"Profit", type number}, {"Shipping Cost", type number}, {"Order Priority", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Postal Code"}),
+				    #"Otras columnas quitadas" = Table.SelectColumns(#"Columnas quitadas",{"Customer ID", "Customer Name"}),
+				    #"Filas agrupadas" = Table.Group(#"Otras columnas quitadas", {"Customer Name"}, {{"Customer ID Unique", each List.Max([Customer ID]), type nullable text}})
+				in
+				    #"Filas agrupadas"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

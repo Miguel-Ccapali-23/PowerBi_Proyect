@@ -1,0 +1,48 @@
+table ParámetroBeneficioFacturacion
+	lineageTag: dfa49841-4442-4675-abbd-8a6d6dd7a85a
+
+	column ParámetroBeneficioFacturacion
+		lineageTag: 93ce61c9-fe37-4664-89f6-cb403041e276
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'ParámetroBeneficioFacturacion Orden'
+
+		relatedColumnDetails
+			groupByColumn: 'ParámetroBeneficioFacturacion Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ParámetroBeneficioFacturacion Campos'
+		isHidden
+		lineageTag: c9594364-8090-4fc9-a463-c4c9106e2e1d
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'ParámetroBeneficioFacturacion Orden'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ParámetroBeneficioFacturacion Orden'
+		isHidden
+		formatString: 0
+		lineageTag: 95c18108-c46f-4608-89c2-aae6f7275207
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ParámetroBeneficioFacturacion = calculated
+		mode: import
+		source =
+				{
+				    ("Beneficio por año", NAMEOF('Global Super Store Data'[Total de beneficio]), 0),
+				    ("Facturación por año", NAMEOF('Global Super Store Data'[Total facturación]), 1)
+				}
+
+	annotation PBI_Id = fab8ed520b5844a29605f55d987f0c45
+

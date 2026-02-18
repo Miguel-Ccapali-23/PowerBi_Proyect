@@ -1,0 +1,28 @@
+table DiscountAdjustment
+	lineageTag: f69c1d93-523a-4d87-842a-6b14155eb43a
+
+	measure 'Valor de DiscountAdjustment' = SELECTEDVALUE('DiscountAdjustment'[DiscountAdjustment], 0)
+		lineageTag: 52eba88c-1ee1-444b-aefa-f495e796de2e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DiscountAdjustment
+		lineageTag: 2d941b03-45df-4bf4-8509-a6c11e277b53
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DiscountAdjustment = calculated
+		mode: import
+		source = GENERATESERIES(-0.3, 0.3, 0.01)
+
+	annotation PBI_Id = ad02e2778a3c4d60bf645413b7e935cf
+

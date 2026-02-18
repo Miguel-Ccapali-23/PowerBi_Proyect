@@ -1,0 +1,184 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "b556ba877e44961c0f11",
+  "position": {
+    "x": 34,
+    "y": 16,
+    "z": 0,
+    "height": 204.5,
+    "width": 199.5,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "multiRowCard",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Global Super Store Data"
+                        }
+                      },
+                      "Property": "Unique Customer ID.Customer ID Unique"
+                    }
+                  },
+                  "Function": 2
+                }
+              },
+              "queryRef": "Global Super Store Data.Unique Customer ID.Customer ID Unique",
+              "nativeQueryRef": "Número de Clientes",
+              "displayName": "Número de Clientes"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Global Super Store Data"
+                        }
+                      },
+                      "Property": "Order ID"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "Global Super Store Data.Order ID",
+              "nativeQueryRef": "Pedidos",
+              "displayName": "Pedidos"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Global Super Store Data"
+                        }
+                      },
+                      "Property": "Sales"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Global Super Store Data.Sales)",
+              "nativeQueryRef": "Total facturación",
+              "displayName": "Total facturación"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Global Super Store Data"
+                        }
+                      },
+                      "Property": "Profit"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "Sum(Global Super Store Data.Profit)",
+              "nativeQueryRef": "Total Beneficio",
+              "displayName": "Total Beneficio"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Global Super Store Data"
+                      }
+                    },
+                    "Property": "Unique Customer ID.Customer ID Unique"
+                  }
+                },
+                "Function": 2
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "dataLabels": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1B9825'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryLabels": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0.1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

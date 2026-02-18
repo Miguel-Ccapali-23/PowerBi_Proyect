@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Análisis de ventas global Super Store"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "374f2a89-1293-4db9-b978-ce57b3c42787"
+  }
+}

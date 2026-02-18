@@ -1,0 +1,269 @@
+table 'Global Super Store Data'
+	lineageTag: ea284277-baae-4c62-a7f1-6c84471fc0ed
+
+	measure 'Total facturación' = SUM('Global Super Store Data'[Sales])
+		lineageTag: 5464fd18-8d82-4357-aae0-b50a3e30775b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total de beneficio' = SUM('Global Super Store Data'[Profit])
+		lineageTag: be5f52e5-649b-453f-9dfa-544ee7238cef
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure TotalPedidos = count('Global Super Store Data'[Order ID])
+		formatString: 0
+		lineageTag: c65ab15c-b0ed-4528-b3aa-59041dba94a4
+
+	measure TotalQuantity = sum('Global Super Store Data'[Quantity])
+		formatString: 0
+		lineageTag: 6042cd83-27cd-4437-a777-75ab205a69c1
+
+	measure MediaDiscount = AVERAGE('Global Super Store Data'[Discount]) * 100
+		lineageTag: 57f53401-9000-4dd9-90b7-9cd1d670c1ee
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure AdjustedProfit = SUMX('Global Super Store Data', 'Global Super Store Data'[Profit] - ('Global Super Store Data'[Sales] * DiscountAdjustment[Valor de DiscountAdjustment]))
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: b7395859-3e66-4628-ba30-033afb3139a4
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Row ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 750ad677-9813-4dfc-ae1a-8d5ea66ed702
+		summarizeBy: count
+		sourceColumn: Row ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order ID'
+		dataType: string
+		lineageTag: 8f31ddf9-8d8a-436e-8161-dfbc23f7b453
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8515c8cf-3da9-4154-905d-1fae417b53fd
+		summarizeBy: none
+		sourceColumn: Order Date
+
+		variation Variación
+			isDefault
+			relationship: a9dcc5f3-3749-4650-a3c1-084040898fec
+			defaultHierarchy: LocalDateTable_f203a5ae-8ccd-49e8-982a-090325b4c85e.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Ship Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4c112f70-8989-4d12-b4b0-b50988d246ec
+		summarizeBy: none
+		sourceColumn: Ship Date
+
+		variation Variación
+			isDefault
+			relationship: 5c89decb-4d14-494d-b2ce-6241ed6afd8a
+			defaultHierarchy: LocalDateTable_e82c604d-fcac-4091-a2cb-217da0a0c908.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Ship Mode'
+		dataType: string
+		lineageTag: 32717d93-564f-4a46-a48c-74e1fb208c64
+		summarizeBy: none
+		sourceColumn: Ship Mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer ID'
+		dataType: string
+		lineageTag: 80b78f67-6d31-46fa-9664-d84aec43c226
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Name'
+		dataType: string
+		lineageTag: ee5da214-ac0f-4284-bf48-6f8d90f1c299
+		summarizeBy: none
+		sourceColumn: Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segment
+		dataType: string
+		lineageTag: ff59508d-f837-42b2-acc7-c1da3e2f1b36
+		summarizeBy: none
+		sourceColumn: Segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: ca4faa4b-8a0d-42b6-b802-33da62fce26d
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: c5c16c2e-9fad-4e4f-a66b-21a3c70778f6
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 25e21e73-c72f-497b-9c03-67e1ee5bcf31
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Market
+		dataType: string
+		lineageTag: 25bc811d-4fd8-44cc-a7c8-5c3aec35c049
+		summarizeBy: none
+		sourceColumn: Market
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 45920be7-d7d4-48f1-83e3-f078296a2881
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product ID'
+		dataType: string
+		lineageTag: 01891a28-944e-4b35-9d8d-09721c08fc8f
+		summarizeBy: none
+		sourceColumn: Product ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: a976e056-324a-44e6-b1dc-5563bb2082d4
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sub-Category
+		dataType: string
+		lineageTag: c4d8e664-33c3-49f6-9055-5da94aa7341a
+		summarizeBy: none
+		sourceColumn: Sub-Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Name'
+		dataType: string
+		lineageTag: f04f91d0-0f2d-4ee0-91e8-24845a9c9952
+		summarizeBy: none
+		sourceColumn: Product Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales
+		dataType: double
+		lineageTag: 41adf4aa-78dd-47b4-847f-bc4c4c5fb315
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b513f07-63a6-41be-83f2-c611cd136ab0
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Discount
+		dataType: double
+		lineageTag: f64f2ad5-96ad-4190-a51c-910ae167b9e3
+		summarizeBy: sum
+		sourceColumn: Discount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Profit
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 76bfb542-1b32-42fb-b673-30003107b9ae
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Shipping Cost'
+		dataType: double
+		lineageTag: 603a88c7-33d1-4ac5-b4f8-99eb74b283e0
+		summarizeBy: sum
+		sourceColumn: Shipping Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Order Priority'
+		dataType: string
+		lineageTag: 08630fe5-939b-4ae5-856b-38ea7ecaba5a
+		summarizeBy: none
+		sourceColumn: Order Priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Customer ID.Customer ID Unique'
+		dataType: string
+		lineageTag: 49a78682-18e6-4db7-999f-2fe98db39147
+		summarizeBy: none
+		sourceColumn: Unique Customer ID.Customer ID Unique
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Global Super Store Data' = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\HP\Downloads\Global_Superstore_Dataset.xlsx"), null, true),
+				    Sheet1_Sheet = Origen{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"Row ID", Int64.Type}, {"Order ID", type text}, {"Order Date", type date}, {"Ship Date", type date}, {"Ship Mode", type text}, {"Customer ID", type text}, {"Customer Name", type text}, {"Segment", type text}, {"City", type text}, {"State", type text}, {"Country", type text}, {"Postal Code", Int64.Type}, {"Market", type text}, {"Region", type text}, {"Product ID", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Product Name", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Discount", type number}, {"Profit", type number}, {"Shipping Cost", type number}, {"Order Priority", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Postal Code"}),
+				    #"Consultas combinadas" = Table.NestedJoin(#"Columnas quitadas", {"Customer Name"}, #"Unique Customer ID", {"Customer Name"}, "Unique Customer ID", JoinKind.LeftOuter),
+				    #"Se expandió Unique Customer ID" = Table.ExpandTableColumn(#"Consultas combinadas", "Unique Customer ID", {"Customer ID Unique"}, {"Unique Customer ID.Customer ID Unique"})
+				in
+				    #"Se expandió Unique Customer ID"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

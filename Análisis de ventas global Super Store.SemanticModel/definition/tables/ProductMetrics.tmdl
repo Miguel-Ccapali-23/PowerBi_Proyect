@@ -1,0 +1,51 @@
+table ProductMetrics
+	lineageTag: d2f22ebd-9f7a-489e-b7a6-08141eda76df
+
+	column ProductMetrics
+		lineageTag: 5b540f7a-86a5-471b-ac85-afd6d7963ad8
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'ProductMetrics Orden'
+
+		relatedColumnDetails
+			groupByColumn: 'ProductMetrics Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ProductMetrics Campos'
+		isHidden
+		lineageTag: 990b4320-10ae-4d94-8610-f7c6bd3a8aa5
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'ProductMetrics Orden'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ProductMetrics Orden'
+		isHidden
+		formatString: 0
+		lineageTag: 84c07a75-ca82-4377-8a2e-89bb9f3bceb4
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ProductMetrics = calculated
+		mode: import
+		source =
+				{
+				    ("Beneficio", NAMEOF('Global Super Store Data'[Total de beneficio]), 0),
+				    ("Facturación", NAMEOF('Global Super Store Data'[Total facturación]), 1),
+				    ("Pedidos", NAMEOF('Global Super Store Data'[TotalPedidos]), 2),
+				    ("Cantidad", NAMEOF('Global Super Store Data'[TotalQuantity]), 3),
+				    ("Descuento", NAMEOF('Global Super Store Data'[MediaDiscount]), 4)
+				}
+
+	annotation PBI_Id = 2037fad4cc4d42b991c2a1b1bc4dfab9
+

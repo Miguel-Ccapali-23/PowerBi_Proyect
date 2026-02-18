@@ -1,0 +1,51 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "a051f6238b4a73db0d22",
+  "position": {
+    "x": 68.333333333333343,
+    "y": 185,
+    "z": 7000,
+    "height": 275,
+    "width": 240,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DiscountAdjustment"
+                    }
+                  },
+                  "Property": "DiscountAdjustment"
+                }
+              },
+              "queryRef": "DiscountAdjustment.DiscountAdjustment",
+              "nativeQueryRef": "DiscountAdjustment",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {}
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

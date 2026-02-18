@@ -1,0 +1,335 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "aa3bcbc85a9c58efc85f",
+  "position": {
+    "x": 328.33333333333337,
+    "y": 475,
+    "z": 3000,
+    "height": 226.66666666666669,
+    "width": 931.66666666666674,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "areaChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Global Super Store Data"
+                            }
+                          },
+                          "Name": "Variación",
+                          "Property": "Order Date"
+                        }
+                      },
+                      "Hierarchy": "Jerarquía de fechas"
+                    }
+                  },
+                  "Level": "Mes"
+                }
+              },
+              "queryRef": "Global Super Store Data.Order Date.Variación.Jerarquía de fechas.Mes",
+              "nativeQueryRef": "Order Date Mes",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Global Super Store Data"
+                            }
+                          },
+                          "Name": "Variación",
+                          "Property": "Order Date"
+                        }
+                      },
+                      "Hierarchy": "Jerarquía de fechas"
+                    }
+                  },
+                  "Level": "Día"
+                }
+              },
+              "queryRef": "Global Super Store Data.Order Date.Variación.Jerarquía de fechas.Día",
+              "nativeQueryRef": "Order Date Día",
+              "active": false
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Global Super Store Data"
+                    }
+                  },
+                  "Property": "Total de beneficio"
+                }
+              },
+              "queryRef": "Global Super Store Data.Total de beneficio",
+              "nativeQueryRef": "Beneficio",
+              "displayName": "Beneficio"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Global Super Store Data"
+                    }
+                  },
+                  "Property": "Total facturación"
+                }
+              },
+              "queryRef": "Global Super Store Data.Total facturación",
+              "nativeQueryRef": "Facturación",
+              "displayName": "Facturación"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Global Super Store Data"
+                    }
+                  },
+                  "Property": "TotalPedidos"
+                }
+              },
+              "queryRef": "Global Super Store Data.TotalPedidos",
+              "nativeQueryRef": "Pedidos",
+              "displayName": "Pedidos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Global Super Store Data"
+                    }
+                  },
+                  "Property": "TotalQuantity"
+                }
+              },
+              "queryRef": "Global Super Store Data.TotalQuantity",
+              "nativeQueryRef": "Cantidad",
+              "displayName": "Cantidad"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Global Super Store Data"
+                    }
+                  },
+                  "Property": "MediaDiscount"
+                }
+              },
+              "queryRef": "Global Super Store Data.MediaDiscount",
+              "nativeQueryRef": "Descuento",
+              "displayName": "Descuento"
+            }
+          ],
+          "fieldParameters": [
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ProductMetrics"
+                    }
+                  },
+                  "Property": "ProductMetrics"
+                }
+              },
+              "index": 0,
+              "length": 5
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000D"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Global Super Store Data.Total de beneficio"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Global Super Store Data.Total facturación"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 5,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Global Super Store Data.TotalPedidos"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Global Super Store Data.TotalQuantity"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 9,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Global Super Store Data.MediaDiscount"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ProductMetrics"
+                        }
+                      },
+                      "Property": "ProductMetrics"
+                    }
+                  },
+                  "Function": 3
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

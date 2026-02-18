@@ -1,0 +1,23 @@
+relationship a9dcc5f3-3749-4650-a3c1-084040898fec
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Global Super Store Data'.'Order Date'
+	toColumn: LocalDateTable_f203a5ae-8ccd-49e8-982a-090325b4c85e.Date
+
+relationship 5c89decb-4d14-494d-b2ce-6241ed6afd8a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Global Super Store Data'.'Ship Date'
+	toColumn: LocalDateTable_e82c604d-fcac-4091-a2cb-217da0a0c908.Date
+
+relationship AutoDetected_997a9dff-eec8-46f1-8960-e08060a6ac48
+	fromColumn: 'Global Super Store Data'.'Customer Name'
+	toColumn: 'Unique Customer ID'.'Customer Name'
+
+relationship AutoDetected_6e668149-1d1b-4d5e-924a-f2144a58140f
+	isActive: false
+	fromColumn: 'Frecuencia de compras clientes'.'Customer Name'
+	toColumn: 'Unique Customer ID'.'Customer Name'
+
+relationship AutoDetected_64f32e16-5785-4e35-8a71-d7dc734446e9
+	fromColumn: 'Global Super Store Data'.'Unique Customer ID.Customer ID Unique'
+	toColumn: 'Frecuencia de compras clientes'.'Unique Customer ID.Customer ID Unique'
+

@@ -1,0 +1,106 @@
+table 'Frecuencia de compras clientes'
+	lineageTag: 6fa8f8de-9c17-4b47-bfc2-14983bd17360
+
+	measure PorcentajeProfit =
+			
+			DIVIDE(
+				SUM('Global Super Store Data'[Profit]),
+				SUM('Global Super Store Data'[Sales])
+			)
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 1b924fab-a848-4199-932b-de42fd634406
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "MathematicalDivision"
+				}
+
+		changedProperty = FormatString
+
+	measure Facturacion_media_cliente =
+			
+			DIVIDE(
+				SUM('Global Super Store Data'[Sales]),
+				COUNTA('Frecuencia de compras clientes'[Unique Customer ID.Customer ID Unique])
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 13c186cc-58ba-408f-b12b-0b8711a3fa00
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "MathematicalDivision"
+				}
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Beneficio medio cliente' =
+			
+			DIVIDE(
+				SUM('Global Super Store Data'[Profit]),
+				COUNTA('Frecuencia de compras clientes'[Unique Customer ID.Customer ID Unique])
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: b2db6ca2-d109-46c2-beac-e4e433d2818d
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "MathematicalDivision"
+				}
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Customer Name'
+		dataType: string
+		lineageTag: c579b60f-2976-465a-a152-5bf049ff22e6
+		summarizeBy: none
+		sourceColumn: Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Frecuencia de compra'
+		dataType: int64
+		formatString: 0
+		lineageTag: c3c949d4-560a-4ee8-9e60-a0d8dc8bca3f
+		summarizeBy: none
+		sourceColumn: Frecuencia de compra
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Segmento frecuencia'
+		dataType: string
+		lineageTag: 820a60f6-f1f0-4aad-8e95-d514db72f0f2
+		summarizeBy: none
+		sourceColumn: Segmento frecuencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unique Customer ID.Customer ID Unique'
+		dataType: string
+		lineageTag: aa764a7b-b9d5-41ea-b0e0-0a0b2d5ff3cb
+		summarizeBy: none
+		sourceColumn: Unique Customer ID.Customer ID Unique
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Frecuencia de compras clientes' = m
+		mode: import
+		source =
+				let
+				    Origen = #"Global Super Store Data",
+				    #"Filas agrupadas" = Table.Group(Origen, {"Unique Customer ID.Customer ID Unique", "Customer Name"}, {{"Frecuencia de compra", each Table.RowCount(_), Int64.Type}}),
+				    #"Columna condicional agregada" = Table.AddColumn(#"Filas agrupadas", "Segmento frecuencia", each if [Frecuencia de compra] <= 40 then "Baja" else if [Frecuencia de compra] <= 80 then "Media" else "Alta"),
+				    #"Filas filtradas" = Table.SelectRows(#"Columna condicional agregada", each true)
+				in
+				    #"Filas filtradas"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+
